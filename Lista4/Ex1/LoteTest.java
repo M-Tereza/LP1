@@ -40,6 +40,18 @@ class LoteTest {
     }
 
     @Test
+    void deveTentarMetragemNaoDeclarada(){
+        try {
+            Lote lote = new Lote();
+            lote.getMetragemQuadradaTerreno();
+            fail();
+        } catch (IllegalArgumentException e){
+            assertEquals("Metragem deve ser declarada", e.getMessage());
+        }
+    }
+
+
+    @Test
     void deveRetornarValorMetragem(){
         Lote lote = new Lote();
 
@@ -72,23 +84,14 @@ class LoteTest {
         }
     }
 
+
     @Test
     void deveCalcularValorLote(){
         Lote lote = new Lote();
 
+        lote.setValorMetroQuadradoTerreno(30f);
         lote.setMetragemQuadradaTerreno(100f);
 
         assertEquals(3000f, lote.calcularValorImovel());
-    }
-
-    @Test
-    void deveRetornarErroMetragemNaoDeclarada(){
-        try {
-            Lote lote = new Lote();
-            lote.calcularValorImovel();
-            fail();
-        } catch (IllegalArgumentException e){
-            assertEquals("Metragem deve ser declarada", e.getMessage());
-        }
     }
 }
