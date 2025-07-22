@@ -3,23 +3,39 @@ package lista4_ex1;
 public class Casa extends Imovel{
     private float metragemQuadradaTerreno;
     private float metragemQuadradaConstrucao;
-    private float valorMetroQuadradoTerreno;
-    private float valorMetroQuadradoConstucao;
+    private float valorMetroQuadradoTerreno = 30f;
+    private float valorMetroQuadradoConstrucao = 50f;
 
     public float getMetragemQuadradaTerreno() {
-        return this.metragemQuadradaTerreno;
+        if(this.metragemQuadradaTerreno == 0f) {
+            throw new IllegalArgumentException("Metragem do terreno deve ser declarada");
+        } else {
+            return this.metragemQuadradaTerreno;
+        }
     }
 
     public void setMetragemQuadradaTerreno(float metragemQuadradaTerreno) {
-        this.metragemQuadradaTerreno = metragemQuadradaTerreno;
+        if(metragemQuadradaTerreno<=0) {
+            throw new IllegalArgumentException("Metragem do terreno inválida");
+        } else {
+            this.metragemQuadradaTerreno = metragemQuadradaTerreno;
+        }
     }
 
     public float getMetragemQuadradaConstrucao() {
-        return this.metragemQuadradaConstrucao;
+        if(this.metragemQuadradaConstrucao == 0f) {
+            throw new IllegalArgumentException("Metragem da construção deve ser declarada");
+        } else {
+            return this.metragemQuadradaConstrucao;
+        }
     }
 
     public void setMetragemQuadradaConstrucao(float metragemQuadradaConstrucao) {
-        this.metragemQuadradaConstrucao = metragemQuadradaConstrucao;
+        if(metragemQuadradaConstrucao<=0) {
+            throw new IllegalArgumentException("Metragem da construção inválida");
+        } else {
+            this.metragemQuadradaConstrucao = metragemQuadradaConstrucao;
+        }
     }
 
     public float getValorMetroQuadradoTerreno() {
@@ -27,19 +43,27 @@ public class Casa extends Imovel{
     }
 
     public void setValorMetroQuadradoTerreno(float valorMetroQuadradoTerreno) {
-        this.valorMetroQuadradoTerreno = valorMetroQuadradoTerreno;
+        if(valorMetroQuadradoTerreno<=0) {
+            throw new IllegalArgumentException("Valor do metro quadrado do terreno inválido");
+        } else {
+            this.valorMetroQuadradoTerreno = valorMetroQuadradoTerreno;
+        }
     }
 
-    public float getValorMetroQuadradoConstucao() {
-        return this.valorMetroQuadradoConstucao;
+    public float getValorMetroQuadradoConstrucao() {
+        return this.valorMetroQuadradoConstrucao;
     }
 
-    public void setValorMetroQuadradoConstucao(float valorMetroQuadradoConstucao) {
-        this.valorMetroQuadradoConstucao = valorMetroQuadradoConstucao;
+    public void setValorMetroQuadradoConstrucao(float valorMetroQuadradoConstrucao) {
+        if(valorMetroQuadradoConstrucao<=0) {
+            throw new IllegalArgumentException("Valor do metro quadrado da construção inválido");
+        } else {
+            this.valorMetroQuadradoConstrucao = valorMetroQuadradoConstrucao;
+        }
     }
 
     public float calcularValorImovel()
     {
-        return 0;
+        return metragemQuadradaTerreno * valorMetroQuadradoTerreno + metragemQuadradaConstrucao * valorMetroQuadradoConstrucao;
     }
 }

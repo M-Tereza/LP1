@@ -5,7 +5,11 @@ public class Lote extends Imovel{
     private float valorMetroQuadradoTerreno = 30.00f;
 
     public float getMetragemQuadradaTerreno() {
-        return this.metragemQuadradaTerreno;
+        if(this.metragemQuadradaTerreno == 0f) {
+            throw new IllegalArgumentException("Metragem deve ser declarada");
+        } else {
+            return this.metragemQuadradaTerreno;
+        }
     }
 
     public void setMetragemQuadradaTerreno(float metragemQuadradaTerreno) {
@@ -30,10 +34,6 @@ public class Lote extends Imovel{
 
     public float calcularValorImovel()
     {
-        if(metragemQuadradaTerreno == 0f) {
-            throw new IllegalArgumentException("Metragem deve ser declarada");
-        } else {
             return metragemQuadradaTerreno * valorMetroQuadradoTerreno;
-        }
     }
 }
